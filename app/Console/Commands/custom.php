@@ -81,12 +81,12 @@ class custom extends Command
         //     $className
         // );
 
-        // $this->generateFile(
-        //     'seeder',
-        //     $err,
-        //     $classDirectory,
-        //     $className,
-        // );
+        $this->generateFile(
+            'seeder',
+            $err,
+            $classDirectory,
+            $className,
+        );
 
         $this->generateFile(
             'migration',

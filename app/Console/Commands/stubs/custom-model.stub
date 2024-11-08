@@ -40,16 +40,6 @@ class {{ class }} extends Model
         return [];
     }
 
-    /**
-     * Filter data that will be saved in this model
-     *
-     * @var array
-     */
-    public function resourceData($request)
-    {
-        return ModelUtils::filterNullValues([]);
-    }
-
 
     /**
      * Controller associated with this model
