@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-{{-- code your html here!! --}}
+{{-- content in here --}}
 @endsection
 
 @section('scripts')
