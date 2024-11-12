@@ -27,5 +27,9 @@ Route::get('/schedule', function () {
 });
 
 Route::get('/search', function () {
-    return view('/searchGuru');
+    return view('/guru/searchGuru');
+});
+
+Route::get('/detail_guru', function () {
+    return view('/guru/detailGuru');
 });
