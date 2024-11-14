@@ -23,7 +23,7 @@
                             <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                         </div>
                         <p class="text-sm font-medium">
-                            Don't have an account? <a href="#" class="font-bold text-primary-600 underline">Sign Up</a>
+                            Don't have an account? <a href="{{ route('register') }}" class="font-bold text-primary-600 underline">Sign Up</a>
                         </p>
                         <button type="submit" class="w-full border focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-white p-3 text-center" style="background-color: #DA9318">Login</button>
                     </form>

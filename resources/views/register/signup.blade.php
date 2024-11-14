@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <p class="text-sm font-medium">
-                            Already have an account? <a href="#" class="font-bold text-primary-600 underline">Sign In</a>
+                            Already have an account? <a href="{{ route('login') }}" class="font-bold text-primary-600 underline">Sign In</a>
                         </p>
                         <button type="submit" class=" w-1/2 flex justify-center mx-auto border focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-white p-3 text-center" style="background-color: #DA9318">Create an account</button>
                     </form>
