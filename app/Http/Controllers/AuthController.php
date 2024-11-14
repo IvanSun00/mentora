@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mentor;
 use App\Models\Student;
 use Exception;
 use Illuminate\Http\Request;
@@ -53,6 +54,35 @@ class AuthController extends Controller
                 'birth_date' => $r['dob'],
                 'ktp_link' => "storage/" . $ktpLink,
                 'city_id' => 1,
+            ]);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Something went wrong!');
+        }
+        return redirect()->back()->with('success', 'Register completed!');
+    }
+
+    public function registerMentor(Request $r)
+    {
+        $r->validate([
+            'biodata' => 'required|string',
+            'rate' => 'required|numeric',
+            'subject' => 'required|string',
+            'cv_file' => 'required|mimes:pdf|max:4096',
+        ]);
+
+        try {
+            $filePath = 'uploads/' . $r['username'];
+            $extension = $r['cv_file']->getClientOriginalExtension();
+            $timestamp = date('Y-m-d_His');
+            $filename = $timestamp . '_cv.' . $extension;
+            $cvLink = $r['cv_file']->storeAs($filePath, $filename, 'public');
+
+            Mentor::create([
+                'bio' => $r['biodata'],
+                'hourly_rate' => $r['rate'],
+                'cv_link' => "storage/" . $cvLink,
+                'subject_id' => 1,
+                'student_id' => Session::get('student_id'),
             ]);
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong!');

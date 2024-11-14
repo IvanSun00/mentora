@@ -12,10 +12,12 @@ Route::get('/', function () {
  */
 Route::controller(AuthController::class)->group(function () {
     Route::get('/register', 'showRegister')->name('register');
-    Route::get('/register/mentor', 'showRegisterMentor')->name('regiter.mentor');
+    Route::get('/register/mentor', 'showRegisterMentor')->name('register.mentor');
     Route::get('/login', 'showLogin')->name('login');
+    Route::get('/logout')->name('logout');  
 
     Route::post('/register', 'register')->name('register');
+    Route::post('/register/mentor', 'registerMentor')->name('register.mentor');
     Route::post('/login', 'login')->name('login');
 });
 
