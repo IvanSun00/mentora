@@ -1,21 +1,21 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/signup', function () {
-    return view('register/signup');
-});
+/**
+ * Routes for authentication
+ */
+Route::controller(AuthController::class)->group(function(){
+    Route::get('/register', 'showRegister')->name('register');
+    Route::get('/register/mentor', 'showRegisterMentor')->name('regiter.mentor');
+    Route::get('/login', 'showLogin')->name('login');
 
-Route::get('/signup/mentor', function () {
-    return view('register/signupMentor');
-});
-
-Route::get('/login', function () {
-    return view('register/login');
+    Route::post('/register', 'register')->name('register');
 });
 
 Route::get('/navbar', function () {
