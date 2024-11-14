@@ -16,6 +16,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'showLogin')->name('login');
 
     Route::post('/register', 'register')->name('register');
+    Route::post('/login', 'login')->name('login');
 });
 
 Route::get('/navbar', function () {

@@ -6,6 +6,7 @@ use App\Models\Student;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -57,5 +58,22 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Something went wrong!');
         }
         return redirect()->back()->with('success', 'Register completed!');
+    }
+
+    public function login(Request $r)
+    {
+        $r->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        $student = Student::where('username', $r['username'])->first();
+
+        if ($student && Hash::check($r['password'], $student->password)) {
+            Session::put('student_id', $student->id);
+            return redirect()->back()->with('success', 'Login success!');
+        } else {
+            return redirect()->back()->with('error', 'Invalid username or password!');
+        }
     }
 }
