@@ -71,11 +71,16 @@ class AuthController extends Controller
         ]);
 
         try {
-            $filePath = 'uploads/' . $r['username'];
+            $filePath = 'uploads/' . Session::get('username');
             $extension = $r['cv_file']->getClientOriginalExtension();
             $timestamp = date('Y-m-d_His');
             $filename = $timestamp . '_cv.' . $extension;
             $cvLink = $r['cv_file']->storeAs($filePath, $filename, 'public');
+
+            $mentor = Mentor::where('student_id', Session::get('student_id'))->first();
+            if($mentor){
+                return redirect()->back()->with('error', 'Already a mentor!');
+            }
 
             Mentor::create([
                 'bio' => $r['biodata'],
