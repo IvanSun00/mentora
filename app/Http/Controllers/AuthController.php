@@ -107,6 +107,12 @@ class AuthController extends Controller
         if ($student && Hash::check($r['password'], $student->password)) {
             Session::put('student_id', $student->id);
             Session::put('username', $student->username);
+
+            $mentor = Mentor::where('student_id', $student->id)->first();
+            if($mentor){
+                Session::put('mentor_id', $mentor->id);
+            }
+
             return redirect()->back()->with('success', 'Login success!');
         } else {
             return redirect()->back()->with('error', 'Invalid username or password!');
