@@ -101,9 +101,16 @@ class AuthController extends Controller
 
         if ($student && Hash::check($r['password'], $student->password)) {
             Session::put('student_id', $student->id);
+            Session::put('username', $student->username);
             return redirect()->back()->with('success', 'Login success!');
         } else {
             return redirect()->back()->with('error', 'Invalid username or password!');
         }
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect('/login')->with('success', 'Logged out!');
     }
 }
