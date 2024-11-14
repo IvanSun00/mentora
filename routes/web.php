@@ -10,7 +10,7 @@ Route::get('/', function () {
 /**
  * Routes for authentication
  */
-Route::controller(AuthController::class)->group(function(){
+Route::controller(AuthController::class)->group(function () {
     Route::get('/register', 'showRegister')->name('register');
     Route::get('/register/mentor', 'showRegisterMentor')->name('regiter.mentor');
     Route::get('/login', 'showLogin')->name('login');

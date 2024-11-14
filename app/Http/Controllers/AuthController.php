@@ -50,7 +50,7 @@ class AuthController extends Controller
                 'phone_number' => $r['phone_number'],
                 'email' => $r['email'],
                 'birth_date' => $r['dob'],
-                'ktp_link' => $ktpLink,
+                'ktp_link' => "storage/" . $ktpLink,
                 'city_id' => 1,
             ]);
         } catch (Exception $e) {
