@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Student;
 use App\Models\User;
+use App\Models\Mentor;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +16,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Student::create([
+            'username' => 'nicsin student',
+            'password' => Hash::make('password'),
+            'full_name' => 'Nich Sin',
+            'phone_number' => '982376445',
+            'email' => 'nicsin2@email.com',
+            'city' => 'Jakarta',
+            'birth_date' => '2004-05-16',
+            'ktp_link' => 'ktp_example2.com',
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $student = Student::create([
+            'username' => 'nicsin',
+            'password' => Hash::make('password'),
+            'full_name' => 'Nicholas Sindoro',
+            'phone_number' => '0821435729032',
+            'email' => 'nicsin@email.com',
+            'city' => 'Surabaya',
+            'birth_date' => '2024-05-16',
+            'ktp_link' => 'ktp_example.com',
+        ]);
+
+        Mentor::create([
+            'bio' => 'Programmer handal',
+            'hourly_rate' => 100509,
+            'subject' => 'competitive programming',
+            'cv_link' => 'cv_example.com',
+            'student_id' => $student->id,
         ]);
     }
 }
