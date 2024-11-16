@@ -13,18 +13,11 @@ return new class extends Migration
     {
         Schema::create('mentors', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('full_name');
-            $table->string('phone_number');
-            $table->string('email')->unique();
-            $table->date('birth_date');
             $table->text('bio');
             $table->integer('hourly_rate');
+            $table->string('subject');
             $table->string('cv_link');
-            $table->string('ktp_link');
-            $table->foreignId('city_id');
-            $table->foreignId('subject_id');
+            $table->foreignId('student_id');
             $table->timestamps();
         });
     }

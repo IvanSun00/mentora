@@ -16,6 +16,6 @@ class Student extends Model
         'email',
         'birth_date',
         'ktp_link',
-        'city_id',
+        'city',
     ];
 }

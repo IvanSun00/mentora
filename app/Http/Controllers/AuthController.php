@@ -53,7 +53,7 @@ class AuthController extends Controller
                 'email' => $r['email'],
                 'birth_date' => $r['dob'],
                 'ktp_link' => "storage/" . $ktpLink,
-                'city_id' => 1,
+                'city' => $r['city'],
             ]);
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong!');
@@ -78,7 +78,7 @@ class AuthController extends Controller
             $cvLink = $r['cv_file']->storeAs($filePath, $filename, 'public');
 
             $mentor = Mentor::where('student_id', Session::get('student_id'))->first();
-            if($mentor){
+            if ($mentor) {
                 return redirect()->back()->with('error', 'Already a mentor!');
             }
 
@@ -86,7 +86,7 @@ class AuthController extends Controller
                 'bio' => $r['biodata'],
                 'hourly_rate' => $r['rate'],
                 'cv_link' => "storage/" . $cvLink,
-                'subject_id' => 1,
+                'subject' => $r['subject'],
                 'student_id' => Session::get('student_id'),
             ]);
         } catch (Exception $e) {
@@ -109,7 +109,7 @@ class AuthController extends Controller
             Session::put('username', $student->username);
 
             $mentor = Mentor::where('student_id', $student->id)->first();
-            if($mentor){
+            if ($mentor) {
                 Session::put('mentor_id', $mentor->id);
             }
 

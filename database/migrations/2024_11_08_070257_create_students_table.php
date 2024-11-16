@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('phone_number');
             $table->string('email')->unique();
+            $table->string('city');
             $table->date('birth_date');
             $table->string('ktp_link');
-            $table->foreignId('city_id');
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class Mentor extends Model
         'bio',
         'hourly_rate',
         'cv_link',
-        'subject_id',
+        'subject',
         'student_id',
     ];
 }

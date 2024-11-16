@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('hour_end');
             $table->boolean('is_available')->default(false);
             $table->foreignId('mentor_id');
-            $table->foreignId('payment_id');
+            $table->foreignId('payment_id')->nullable();
             $table->timestamps();
         });
     }
