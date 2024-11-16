@@ -123,7 +123,23 @@
 
         // update time slot based on db and currentDate
         function updateTimeSlot() {
-            
+            let formattedDate = currentDate.getFullYear() + '-' +
+                String(currentDate.getMonth() + 1).padStart(2, '0') + '-' +
+                String(currentDate.getDate()).padStart(2, '0');
+
+            $.ajax({
+                url: '{{ route('schedule.getAvailableSlot') }}',
+                type: 'GET',
+                data: {
+                    date: formattedDate,
+                },
+                success: function(response) {
+                    console.log('Success:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
         }
 
         // Current date
