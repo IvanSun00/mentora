@@ -23,13 +23,6 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     @yield('styles')
-    <style>
-        html, body{
-            scroll-behavior: smooth;
-            padding: 0;
-            margin: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -65,9 +58,7 @@
     @endif
 
 
-    @include('partials.navbar')
     @yield('content')
-    @include('partials.footer')
 
     @yield('scripts')
 </body>
