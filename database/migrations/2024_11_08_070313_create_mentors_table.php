@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('hourly_rate');
             $table->string('subject');
             $table->string('cv_link');
-            $table->foreignId('student_id');
+            $table->foreignId('student_id')->constrained();
             $table->timestamps();
         });
     }

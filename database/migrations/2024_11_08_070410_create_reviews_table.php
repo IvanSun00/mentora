@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('punctuality_score');
             $table->float('overall_score');
             $table->string('comment');
-            $table->foreignId('payment_id');
+            $table->foreignId('payment_id')->constrained();
             $table->timestamps();
         });
     }

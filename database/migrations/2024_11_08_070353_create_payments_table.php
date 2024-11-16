@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('file_link');
-            $table->foreignId('student_id');
+            $table->foreignId('student_id')->constrained();
             $table->timestamps();
         });
     }
