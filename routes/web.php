@@ -32,6 +32,7 @@ Route::controller(ScheduleController::class)->prefix('schedule')->name('schedule
     Route::middleware([MentorMiddleware::class])->group(function () {
         Route::get('/', 'index')->name('');
         Route::get('/get-available-slot', 'getAvailableSlot')->name('getAvailableSlot');
+        Route::post('/update-available-slot', 'updateAvailableSlot')->name('updateAvailableSlot');
     });
 });
 

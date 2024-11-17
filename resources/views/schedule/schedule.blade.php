@@ -88,7 +88,7 @@
         <!-- Save Button -->
         <div class="flex justify-center align-middle">
             <button class="mt-3 w-[60%] md:w-[25%] mx-auto py-2 px-4 text-white font-semibold rounded-full text-xl"
-                style="background-color: #DA9318">
+                style="background-color: #DA9318" onclick="saveTimeSlot()">
                 Save schedule
             </button>
         </div>
@@ -114,19 +114,29 @@
         function addOneDay() {
             currentDate.setDate(currentDate.getDate() + 1);
             dateEle.html(formatDate(currentDate));
+            updateTimeSlot();
         }
 
         function subtractOneDay() {
             currentDate.setDate(currentDate.getDate() - 1);
             dateEle.html(formatDate(currentDate));
+            updateTimeSlot();
         }
 
         // update time slot based on db and currentDate
         function updateTimeSlot() {
+            // reset
+            let timeSlots = document.querySelectorAll('.slot');
+            timeSlots.forEach(function(slot) {
+                slot.classList.value = 'slot w-full rounded-lg text-white text-center bg-[#9f4444] p-4 mb-3';
+            });
+            hours = [];
+
             let formattedDate = currentDate.getFullYear() + '-' +
                 String(currentDate.getMonth() + 1).padStart(2, '0') + '-' +
                 String(currentDate.getDate()).padStart(2, '0');
 
+            // get data
             $.ajax({
                 url: '{{ route('schedule.getAvailableSlot') }}',
                 type: 'GET',
@@ -134,10 +144,63 @@
                     date: formattedDate,
                 },
                 success: function(response) {
-                    console.log('Success:', response);
+                    console.log('updating');
+                    let schedules = response['schedules'];
+
+                    schedules.forEach(schedule => {
+                        if (schedule['is_available']) {
+                            let slot = document.querySelector(`.slot[id="${schedule['hour_start']}"]`);
+                            slot.classList.toggle('bg-[#9f4444]');
+                            slot.classList.toggle('bg-[#17B169]');
+
+                            hours.push(schedule['hour_start']);
+                            console.log(hours);
+                        }
+                    });
                 },
                 error: function(xhr, status, error) {
                     console.error('Error:', error);
+                }
+            });
+        }
+
+        function saveTimeSlot() {
+            // make array JSON
+            let hoursJSON = JSON.stringify(hours);
+
+            // Format the date to 'YYYY-MM-DD'
+            let formattedDate = currentDate.getFullYear() + '-' +
+                String(currentDate.getMonth() + 1).padStart(2, '0') + '-' +
+                String(currentDate.getDate()).padStart(2, '0');
+
+            // Send the AJAX request
+            $.ajax({
+                url: '{{ route('schedule.updateAvailableSlot') }}',
+                type: 'POST',
+                data: {
+                    date: formattedDate,
+                    hours: hoursJSON
+                },
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: response['message'],
+                        icon: "success",
+                        confirmButtonColor: '#DA9318',
+                    });
+                    updateTimeSlot();
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        title: "Oops!",
+                        text: error,
+                        icon: "error",
+                        confirmButtonColor: '#DA9318',
+                    });
+                    updateTimeSlot();
                 }
             });
         }
@@ -152,17 +215,14 @@
 
         $(function() {
             $('.slot').on('click', function(e) {
-                let slotId = this.id;
+                let slotId = parseInt(this.id, 10);
                 this.classList.toggle('bg-[#9f4444]');
                 this.classList.toggle('bg-[#17B169]');
 
-                if (hours.includes(slotId)) {
-                    hours = hours.filter(item => item !== slotId);
-                } else {
-                    hours.push(slotId);
-                }
-                console.log(hours);
+                hours.includes(slotId) ? hours = hours.filter(item => item !== slotId) : hours.push(slotId);
             });
+
+            updateTimeSlot();
         });
     </script>
 @endsection
