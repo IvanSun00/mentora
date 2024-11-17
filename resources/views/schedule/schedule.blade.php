@@ -144,7 +144,6 @@
                     date: formattedDate,
                 },
                 success: function(response) {
-                    console.log('updating');
                     let schedules = response['schedules'];
 
                     schedules.forEach(schedule => {
@@ -154,7 +153,6 @@
                             slot.classList.toggle('bg-[#17B169]');
 
                             hours.push(schedule['hour_start']);
-                            console.log(hours);
                         }
                     });
                 },
