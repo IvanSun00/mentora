@@ -47,7 +47,7 @@
                     <p class="ml-2 text-sm">200 November 20222</p>
                 </div>
             </div>
-            <div class="border rounded-3xl w-5/6 p-5 mt-5 ml-24" style="background-color: #F7F6F5">
+            <div class="border rounded-3xl w-5/6 p-5 mt-5 2xl:ml-24 xl:ml-24 lg:ml-14 md:ml-14 sm:ml-10" style="background-color: #F7F6F5">
                 <div class="flex justify-between items-center">
                     <div class="flex items-center">
                         <img class="rounded-full w-10 h-10" src="{{ asset('flo.jpg') }}" alt="">
