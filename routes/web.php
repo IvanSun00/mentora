@@ -43,3 +43,11 @@ Route::get('/search', function () {
 Route::get('/detail_guru', function () {
     return view('/guru/detailGuru');
 });
+
+Route::get('/form_payment', function () {
+    return view('/payment/formPayment');
+});
+
+Route::get('/payment', function () {
+    return view('/payment/payment');
+});
