@@ -51,3 +51,7 @@ Route::get('/form_payment', function () {
 Route::get('/payment', function () {
     return view('/payment/payment');
 });
+
+Route::get('/profile', function () {
+    return view('/profile/profile');
+});

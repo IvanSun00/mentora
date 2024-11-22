@@ -45,7 +45,7 @@
     <i class="fa-solid fa-heart flex justify-end mr-5 mt-5 fa-xl" style="color: #ff0033;"></i>
     <a href="#">
         <img class="rounded-t-lg flex ml-10 -mt-5" src="{{ asset('MentoraClean.png') }}" alt="" />
-        <p class="-mt-20 border z-10 text-white font-bold" style="background-color: #DA9318">Christoper Boenadhi</p>
+        <p class="-mt-20 p-2 border z-10 text-white font-bold" style="background-color: #DA9318">Christoper Boenadhi</p>
     </a>
     <div class="p-5 mt-10">
         <div class="flex">
