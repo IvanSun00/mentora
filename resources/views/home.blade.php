@@ -12,10 +12,10 @@
         </div>
 
         <!-- Text Content -->
-        <div class="flex-1">
-            <h1 class="text-3xl font-bold mb-2">Find your <span class="text-black font-extrabold">mentors</span></h1>
-            <h2 class="text-3xl font-bold mb-2">Become <span class="text-black font-extrabold">mentor</span></h2>
-            <p class="text-xl">Be the best version of yourself</p>
+        <div class="flex-1 p-10">
+            <h1 class="text-5xl font-bold mb-2">Find your <span class="text-black font-extrabold">mentors</span></h1>
+            <h2 class="text-5xl font-bold mb-2">Become <span class="text-black font-extrabold">mentor</span></h2>
+            <p class="text-2xl">Be the best version of yourself</p>
         </div>
     </div>
 

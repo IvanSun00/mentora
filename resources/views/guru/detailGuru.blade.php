@@ -12,10 +12,6 @@
 
 <div class="flex justify-between p-5 mt-5">
     <div class="left ml-24">
-        <h2 class="font-bold text-2xl w-4/5 mb-10">
-            Guru Berpengalaman 4 Tahun Dalam Dunia Pendidikan Dan Seni, Membuka Fun Class Bagi Anak-Anak di Jakarta Dan Sekitarnya (Kids Friendly and Fluent English)
-        </h2>
-
         <p class="text-xl mb-5">Lokasi Kursus</p>
 
         <div class="flex mb-10">

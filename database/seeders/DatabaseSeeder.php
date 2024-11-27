@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Mentor::create([
+            'title' => 'Guru Berpengalaman 4 Tahun Dalam Dunia Pendidikan Dan Seni, Membuka Fun Class Bagi Anak-Anak di Jakarta Dan Sekitarnya (Kids Friendly and Fluent English)',
             'bio' => 'Programmer handal',
             'hourly_rate' => 100509,
             'subject' => 'competitive programming',
