@@ -1,5 +1,4 @@
-@extends('layout.base')
-
+@extends('layout.authBase')
 @section('styles')
 @endsection
 

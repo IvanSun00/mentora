@@ -49,7 +49,18 @@ Route::controller(MentorController::class)->prefix('mentor')->name('mentor.')->g
     Route::get('/detail/{mentor}', 'detailMentor')->name('detailMentor');
 });
 
+Route::get('/detail_guru', function () {
+    return view('/guru/detailGuru');
+});
 
+Route::get('/form_payment', function () {
+    return view('/payment/formPayment');
+});
 
+Route::get('/payment', function () {
+    return view('/payment/payment');
+});
 
-
+Route::get('/profile', function () {
+    return view('/profile/profile');
+});

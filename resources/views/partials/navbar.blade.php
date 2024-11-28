@@ -24,6 +24,13 @@
                     <i class="fa-solid fa-magnifying-glass mr-2"></i> Find a Tutor
                 </button>
             </li>
+            <li>
+                <button>
+                    <a href="#">
+                        <img src="{{ asset('bun.jpg') }}" alt="profile" class="h-12 w-12 mt-1.5 rounded-full">
+                    </a>
+                </button>
+            </li>
         </ul>
       </div>
     </div>
