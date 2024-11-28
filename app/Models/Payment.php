@@ -5,28 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mentor extends Model
+class Payment extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'title',
-        'bio',
-        'teaching_type',
-        'hourly_rate',
-        'cv_link',
-        'subject',
+        'file_link',
         'student_id',
     ];
 
-
-    // Relationship
+    // relation
     public function student()
     {
         return $this->belongsTo(Student::class);
     }
 
-    public function schedules()
+    public function review()
     {
-        return $this->hasMany(Schedule::class);
+        return $this->hasOne(Review::class);
     }
+
+
 }

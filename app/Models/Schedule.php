@@ -16,4 +16,23 @@ class Schedule extends Model
         'mentor_id',
         'payment_id',
     ];
+
+    // Relationship
+    public function mentor()
+    {
+        return $this->belongsTo(Mentor::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasOne(Review::class, 'payment_id', 'payment_id');
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
+
+
+    
 }

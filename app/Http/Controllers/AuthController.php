@@ -63,8 +63,11 @@ class AuthController extends Controller
 
     public function registerMentor(Request $r)
     {
+     
         $r->validate([
+            'title' => 'required|string|max:100',
             'biodata' => 'required|string',
+            'teaching_type' => 'required|numeric|min:0|max:2',
             'rate' => 'required|numeric',
             'subject' => 'required|string',
             'cv_file' => 'required|mimes:pdf|max:4096',
@@ -83,7 +86,9 @@ class AuthController extends Controller
             }
 
             Mentor::create([
+                'title' => $r['title'],
                 'bio' => $r['biodata'],
+                'teaching_type' => $r['teaching_type'],
                 'hourly_rate' => $r['rate'],
                 'cv_link' => "storage/" . $cvLink,
                 'subject' => $r['subject'],

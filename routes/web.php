@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Middleware\MentorMiddleware;
 use App\Http\Middleware\StudentMiddleware;
@@ -36,10 +37,19 @@ Route::controller(ScheduleController::class)->prefix('schedule')->name('schedule
     });
 });
 
-Route::get('/search', function () {
-    return view('/guru/searchGuru');
+/**
+ * Routes for mentor
+ */
+Route::controller(MentorController::class)->prefix('mentor')->name('mentor.')->group(function () {
+    
+    Route::get('/search', 'search')->name('search'); 
+    Route::get('/searchResult', 'searchResult')->name('searchResult');  
+    
+    // rating
+    Route::get('/detail/{mentor}', 'detailMentor')->name('detailMentor');
 });
 
-Route::get('/detail_guru', function () {
-    return view('/guru/detailGuru');
-});
+
+
+
+

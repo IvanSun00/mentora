@@ -12,7 +12,7 @@ class custom extends Command
 {
     // protected $signature = 'make:custom {className} --d={classDirectory}';
 
-    protected $description = 'Create custom class based on template';
+protected $description = 'Create custom class based on template';
 
     public function __construct()
     {

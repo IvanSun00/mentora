@@ -24,12 +24,39 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     @yield('styles')
     <style>
+        :root{
+            --primary: #DA9318;
+            --secondary: #76460B;
+            --tertiary: #FFD43B;
+            --dark: #1A202C;
+            --light: #F7FAFC;
+        }
+
         html, body{
             scroll-behavior: smooth;
             padding: 0;
             margin: 0;
         }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors:{
+                        'primary': '#DA9318',
+                        'secondary': '#EEBB62',
+                        'baseGray': '#f7f6f5',
+                    },
+                    screens:{
+                    }
+                },
+            },
+            corePlugins: {
+                preflight: false,
+            },
+        };
+    </script>
 </head>
 
 <body>

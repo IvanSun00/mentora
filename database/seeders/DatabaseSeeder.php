@@ -40,10 +40,12 @@ class DatabaseSeeder extends Seeder
 
         Mentor::create([
             'bio' => 'Programmer handal',
+            'teaching_type' => 0,
             'hourly_rate' => 100509,
             'subject' => 'competitive programming',
             'cv_link' => 'cv_example.com',
             'student_id' => $student->id,
+            'title' => 'Mentor Handal Berkualitas ya Nicsin Jawabannya',
         ]);
     }
 }
