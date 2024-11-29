@@ -20,10 +20,12 @@
     </div>
 
     <!-- Button -->
-    <div class="mb-8 ml-10 h-20 w-64">
-        <button class="bg-yellow-500 text-white text-2xl font-semibold py-3 px-8 rounded-lg hover:bg-yellow-600 transition duration-300 h-20 w-64">
-            <a href="{{ route('login') }}">Start Journey</a>
-        </button>
+    <div class="mb-8 ml-10">
+        <a href="{{ route('login') }}" class="z-50 h-20 w-64">
+            <button class="bg-yellow-500 text-white text-2xl font-semibold py-3 px-8 rounded-lg hover:bg-yellow-600 transition duration-300 h-20 w-64">
+                Start Journey
+            </button>
+        </a>
     </div>
 
     <!-- Illustration -->
