@@ -34,7 +34,7 @@
                     <p class="mb-3 text-xs" style="color: #76460B"><i class="fa-solid fa-star" style="color: #FFD43B;"></i> {{ $mentor->average_rating }} ({{ $mentor->total_review }} ulasan)</p>
                     <div class="grid grid-cols-2 p-3 mb-3">
                         <p class="text-start">Tarif per jam</p>
-                        <p class="font-bold text-end">{{ $mentor->hourly_rate }}</p>
+                        <p class="font-bold text-end rupiah">{{ $mentor->hourly_rate }}</p>
                         <p class="text-start">Jam mengajar</p>
                         <p class="font-bold text-end">{{ $mentor->teaching_hours}}</p>
                     </div>  
@@ -119,4 +119,18 @@
 @endsection
 
 @section('scripts')
+<script>
+    function formatRupiah(number) {
+        return 'Rp ' + number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    
+    $(document).ready(function(){
+        $('.rupiah').each(function() {
+            var amount = parseInt($(this).text());  // Get the current number from the element
+            $(this).text(formatRupiah(amount));    // Set the text to the formatted Rupiah value
+        });
+
+    });
+
+</script>
 @endsection

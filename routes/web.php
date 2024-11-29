@@ -35,6 +35,8 @@ Route::controller(ScheduleController::class)->prefix('schedule')->name('schedule
         Route::get('/get-available-slot', 'getAvailableSlot')->name('getAvailableSlot');
         Route::post('/update-available-slot', 'updateAvailableSlot')->name('updateAvailableSlot');
     });
+
+    Route::get('/get-available-mentor-slot', 'getAvailableMentorSlot')->name('getAvailableMentorSlot');
 });
 
 /**
@@ -47,18 +49,13 @@ Route::controller(MentorController::class)->prefix('mentor')->name('mentor.')->g
     
     // rating
     Route::get('/detail/{mentor}', 'detailMentor')->name('detailMentor');
-});
 
-Route::get('/detail_guru', function () {
-    return view('/guru/detailGuru');
-});
+    //reserve
+    Route::get('/reserve/{mentor}', 'reserve')->name('reserve');
 
-Route::get('/form_payment', function () {
-    return view('/payment/formPayment');
-});
-
-Route::get('/payment', function () {
-    return view('/payment/payment');
+    // payment
+    Route::get('/payment/{mentor}', 'payment')->name('payment');
+    Route::post('/payment/{mentor}', 'paymentProcess')->name('paymentProcess');
 });
 
 Route::get('/profile', function () {

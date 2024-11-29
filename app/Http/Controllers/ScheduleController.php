@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Schedule;
+use Illuminate\Support\Facades\Validator;
 
 class ScheduleController extends Controller
 {
@@ -88,5 +89,29 @@ class ScheduleController extends Controller
             ->update(['is_available' => 0]);
 
         return response()->json(['message' => 'Slots updated successfully']);
+    }
+
+    public function getAvailableMentorSlot(Request $r)
+    {
+        $validator = Validator::make($r->all(), [
+            'mentor_id' => 'required|exists:mentors,id',
+            'date' => 'required|date',
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'message' => 'validation error',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+        
+        $schedules = Schedule::whereDate('date', $r['date'])
+            ->where('is_available', 1)
+            ->get();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $schedules
+        ]);
     }
 }
