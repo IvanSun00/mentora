@@ -5,11 +5,11 @@
 
 @section('content')
 <section>
-    <div class="flex flex-col items-center justify-center py-8 mx-auto">
+    <div class="flex flex-col items-center justify-center py-8 mx-auto bg-gradient-to-r from-amber-100 to-red-300">
         <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
             <img class="h-36 w-36" src="{{ asset('MentoraClean.png') }}" alt="logo">
         </a>
-        <div class="border shadow w-1/2 p-8 rounded-xl">
+        <div class="shadow-lg w-1/2 p-8 rounded-2xl bg-orange-300">
             <div class="w-full">
                 <div class="p-6 space-y-6">
                     <form class="space-y-4 md:space-y-6" action="{{ route('register.mentor') }}" method="POST" enctype="multipart/form-data">
