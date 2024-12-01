@@ -104,8 +104,9 @@ class ScheduleController extends Controller
                 'errors' => $validator->errors()
             ], 400);
         }
-        
+
         $schedules = Schedule::whereDate('date', $r['date'])
+            ->where('mentor_id', $r['mentor_id'])
             ->where('is_available', 1)
             ->get();
 

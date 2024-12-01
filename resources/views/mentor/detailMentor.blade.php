@@ -44,12 +44,11 @@
         </div>
 
 
-        <div class="border rounded-3xl w-full p-5" style="background-color: #C9F0B7">
-            <h1 class="font-semibold mb-2 text-lg">About {{ $mentor->student->full_name }}</h1>
-            <p class="mb-5">
+        <div class="border rounded-3xl w-full p-6" style="background-color: #C9F0B7">
+            <h1 class="font-semibold text-lg">About {{ $mentor->student->full_name }}</h1>
+            <p>
                 {{ $mentor->bio }}
             </p>
-            <button class="border rounded-2xl p-2 w-28 border-black">Read More</button>
         </div>
 
         {{-- Ulasan --}}
