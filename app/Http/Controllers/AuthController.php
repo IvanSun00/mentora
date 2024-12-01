@@ -58,12 +58,12 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong!');
         }
-        return redirect()->back()->with('success', 'Register completed!');
+        return redirect()->route('login')->with('success', 'Register completed!');
     }
 
     public function registerMentor(Request $r)
     {
-     
+
         $r->validate([
             'title' => 'required|string|max:100',
             'biodata' => 'required|string',
@@ -97,7 +97,7 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong!');
         }
-        return redirect()->back()->with('success', 'Register completed!');
+        return redirect()->route('login')->with('success', 'Register completed!');
     }
 
     public function login(Request $r)
@@ -118,7 +118,7 @@ class AuthController extends Controller
                 Session::put('mentor_id', $mentor->id);
             }
 
-            return redirect()->back()->with('success', 'Login success!');
+            return redirect()->route('mentor.search')->with('success', 'Login success!');
         } else {
             return redirect()->back()->with('error', 'Invalid username or password!');
         }

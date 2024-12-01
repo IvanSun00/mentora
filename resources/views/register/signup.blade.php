@@ -72,4 +72,7 @@
 @endsection
 
 @section('scripts')
+    <script>
+        document.title = "Register";
+    </script>
 @endsection
