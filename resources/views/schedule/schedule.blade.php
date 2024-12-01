@@ -222,5 +222,7 @@
 
             updateTimeSlot();
         });
+
+        document.title = "Schedule";
     </script>
 @endsection
