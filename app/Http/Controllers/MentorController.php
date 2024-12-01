@@ -29,7 +29,7 @@ class MentorController extends Controller
             'min_fee' => 'nullable|integer',
             'max_fee' => 'nullable|integer',
         ]);
-    
+
         if($validator->fails()){
             return response()->json([
                 'message' => 'Failed',
@@ -40,12 +40,12 @@ class MentorController extends Controller
         $validatedData = $validator->validated();
 
         // Query pencarian berdasarkan data valid
-        $query = Mentor::with(['student:id,full_name,email,city','schedules.reviews']); 
+        $query = Mentor::with(['student:id,full_name,email,city','schedules.reviews']);
 
         if (!empty($validatedData['subject'])) {
             $query->where('subject', 'LIKE', '%' . $validatedData['subject'] . '%');
-        }   
-        if (!empty($validatedData['teaching_type']) && $validatedData['teaching_type'] != 2) {
+        }
+        if ($validatedData['teaching_type'] != 2) {
             $query->where('teaching_type', $validatedData['teaching_type']);
         }
         if (!empty($validatedData['location'])) {
@@ -64,7 +64,7 @@ class MentorController extends Controller
         // Ambil hasil pencarian
         $results = $query->get();
 
-        // add rating 
+        // add rating
         foreach ($results as $mentor) {
             $rating = $this->get_rating($mentor);
             $mentor->total_review = $rating['total_review'];
@@ -95,7 +95,7 @@ class MentorController extends Controller
             }
         }
         $averageRating = $totalReview ? round($totalRating / $totalReview, 2) : 0;
-        
+
         return [
             'total_review' => $totalReview,
             'average_rating' => $averageRating,
@@ -171,7 +171,7 @@ class MentorController extends Controller
         if($validator->fails()){
             return redirect()->route('mentor.reserve',['mentor' => $mentor->id])->withErrors($validator);
         }
-        
+
         // pisahkan hours by , dan check value setiap bagian antara 6-23
         $hours = explode(',', $request->hours);
         foreach ($hours as $hour) {
@@ -180,12 +180,12 @@ class MentorController extends Controller
             }
         }
 
-        // check date lebih besar dari hari ini 
+        // check date lebih besar dari hari ini
         $date = $request->date;
         if ($date < date('Y-m-d')) {
             return redirect()->route('mentor.reserve',['mentor' => $mentor->id])->withErrors('Invalid date');
-        }  
-        
+        }
+
         $rating = $this->get_rating($mentor);
         $mentor->total_review = $rating['total_review'];
         $mentor->average_rating = $rating['average_rating'];
@@ -203,8 +203,8 @@ class MentorController extends Controller
                 break;
             default:
                 $mentor->teaching_type = [];
-        } 
-        
+        }
+
         return view('mentor.payment', compact('mentor', 'hours', 'date'));
     }
 
@@ -228,7 +228,7 @@ class MentorController extends Controller
             $timestamp = date('Y-m-d_His');
             $filename = $timestamp . '_payment.' . $extension;
             $fileLink = $request['paymentProof']->storeAs($filePath, $filename, 'public');
-            
+
             // save to payment file to db
             $payment = Payment::create([
                 'file_link' => 'storage/'.$fileLink,
@@ -265,6 +265,6 @@ class MentorController extends Controller
 
     }
 
-    
+
 
 }

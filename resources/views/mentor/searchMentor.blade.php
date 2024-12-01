@@ -7,7 +7,7 @@
     }
 
     .mini-search input,  .mini-search  select, .drawer input, .drawer select{
-        background-color: #F7F6F5 !important; 
+        background-color: #F7F6F5 !important;
     }
 
     .search input:focus , .search select:focus{
@@ -37,22 +37,22 @@
 <div class="grid grid-cols-3 gap-5 mt-10 p-5 mb-10 search big-search">
     <div class="col-span-2 border flex rounded-lg p-1 ml-10 bg-white" style="border-color: #76460B">
         <i class="fa-solid fa-graduation-cap fa-xl mt-5 ml-4"></i>
-        
+
         <!-- Subject Input -->
-        <input 
-            type="text" 
-            name="subject" 
-            id="subject" 
-            class="text-gray-900 text-sm border-0 border-r-2 block w-full p-2.5" 
-            placeholder="Subject" 
+        <input
+            type="text"
+            name="subject"
+            id="subject"
+            class="text-gray-900 text-sm border-0 border-r-2 block w-full p-2.5"
+            placeholder="Subject"
             required
         >
-        
+
         <!-- Teaching Type Dropdown -->
-        <select 
-            name="teaching_type" 
-            id="teaching_type" 
-            class="text-gray-900 text-sm rounded-lg border-none block w-full p-2.5" 
+        <select
+            name="teaching_type"
+            id="teaching_type"
+            class="text-gray-900 text-sm rounded-lg border-none block w-full p-2.5"
             required
         >
             <option value="2" selected>Any Type</option>
@@ -60,7 +60,7 @@
             <option value="1">Offline</option>
         </select>
     </div>
-    
+
     <div class="border flex rounded-lg p-1 mr-10 bg-white" style="border-color: #76460B">
         {{-- location --}}
         <i class="fa-solid fa-location-dot fa-xl mt-5 ml-4"></i>
@@ -89,8 +89,8 @@
     <div class="border flex rounded-lg p-1 bg-baseGray w-full max-w-md"  data-drawer-target="drawer-form" data-drawer-show="drawer-form" aria-controls="drawer-form">
         <i class="fa-solid fa-graduation-cap fa-xl mt-5 ml-4"></i>
         <!-- Subject Input -->
-        <label 
-            for="subject" 
+        <label
+            for="subject"
             class="text-gray-900 text-sm block w-full p-2.5">
             Enter Subject
         </label>
@@ -121,12 +121,12 @@
         <!-- Subject Input -->
         <div class="mb-6">
             <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
-            <input 
-                type="text" 
-                name="subject" 
-                id="subject" 
-                class="text-gray-900 text-sm border-0 block w-full p-2.5 rounded-lg" 
-                placeholder="Subject" 
+            <input
+                type="text"
+                name="subject"
+                id="subject"
+                class="text-gray-900 text-sm border-0 block w-full p-2.5 rounded-lg"
+                placeholder="Subject"
                 required
             >
         </div>
@@ -134,10 +134,10 @@
         <!-- Teaching Type Dropdown -->
         <div class="mb-6">
             <label for="teaching_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teaching Type</label>
-            <select 
-                name="teaching_type" 
-                id="teaching_type" 
-                class="text-gray-900 text-sm rounded-lg border-none block w-full p-2.5 " 
+            <select
+                name="teaching_type"
+                id="teaching_type"
+                class="text-gray-900 text-sm rounded-lg border-none block w-full p-2.5 "
                 required
             >
                 <option value="2" selected>Any Type</option>
@@ -149,12 +149,12 @@
         <!-- Location Input -->
         <div class="mb-6">
             <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
-            <input 
-                type="text" 
-                name="location" 
-                id="location" 
-                class="text-gray-900 text-sm border-none block w-full p-2.5 rounded-lg" 
-                placeholder="Location" 
+            <input
+                type="text"
+                name="location"
+                id="location"
+                class="text-gray-900 text-sm border-none block w-full p-2.5 rounded-lg"
+                placeholder="Location"
                 required
             >
         </div>
@@ -162,12 +162,12 @@
         <!-- min_fee -->
         <div class="mb-6">
             <label for="min_fee" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Minimum Fee</label>
-            <input 
-                type="number" 
-                name="min_fee" 
-                id="min_fee" 
-                class="text-gray-900 text-sm border-none block w-full p-2.5 rounded-lg" 
-                placeholder="Minimum Fee" 
+            <input
+                type="number"
+                name="min_fee"
+                id="min_fee"
+                class="text-gray-900 text-sm border-none block w-full p-2.5 rounded-lg"
+                placeholder="Minimum Fee"
                 required
             >
         </div>
@@ -175,12 +175,12 @@
         <!-- max_fee -->
         <div class="mb-6">
             <label for="max_fee" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maximum Fee</label>
-            <input 
-                type="number" 
-                name="max_fee" 
-                id="max_fee" 
-                class="text-gray-900 text-sm border-none block w-full p-2.5 rounded-lg" 
-                placeholder="Maximum Fee" 
+            <input
+                type="number"
+                name="max_fee"
+                id="max_fee"
+                class="text-gray-900 text-sm border-none block w-full p-2.5 rounded-lg"
+                placeholder="Maximum Fee"
                 required
             >
         </div>
@@ -188,12 +188,12 @@
         <!-- Search Input -->
         <div class="mb-6">
             <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Search</label>
-            <input 
-                type="text" 
-                name="username" 
-                id="username" 
-                class="text-gray-900 text-sm border-none block w-full p-2.5" 
-                placeholder="Search" 
+            <input
+                type="text"
+                name="username"
+                id="username"
+                class="text-gray-900 text-sm border-none block w-full p-2.5"
+                placeholder="Search"
                 required
             >
         </div>
@@ -223,6 +223,8 @@
             const location = $('#location').val();
             const min_fee = $('#min_fee').val()
             const max_fee = $('#max_fee').val()
+
+            console.log(teaching_type)
 
             // Fetch tutors
             $.ajax({
@@ -292,7 +294,7 @@
             });
 
             console.log("done fetching")
-            
+
         }
         $('#subject, #teaching_type, #location, #min_fee, #max_fee').on('change', fetchTutors);
     });
