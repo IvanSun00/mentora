@@ -206,7 +206,7 @@
 </div>
 
 
-<section class="card-container mx-10 px-5 my-8 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-8">
+<section class="card-container mx-10 px-5 my-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
     {{-- <i class="fa-solid fa-repeat mt-1.5 mr-1"></i> --}}
 </section>
 
@@ -240,14 +240,16 @@
                 success: function(response){
                     $('.card-container').empty();
                     console.log(response);
+                    const detailMentorRoute = "{{ route('mentor.detailMentor', ':tutorId') }}";
                     if(response.message == 'success'){
                         if(response.data.length > 0){
                             console.log("masuk");
                              // append new cards
                             response.data.forEach(tutor => {
+                                const detailUrl = detailMentorRoute.replace(':tutorId', tutor.id);
                                 $('.card-container').append(`
                                     <div class="max-w-sm bg-white border border-[#76460B] rounded-lg">
-                                        <a href="#" class="relative">
+                                        <a href="${detailUrl}" class="relative">
                                             <img class="rounded-t-lg object-cover w-full h-56" src="{{ asset('flo.jpg') }}" alt="Image description" />
                                             <!-- Text inside the image -->
                                             <div class="absolute bottom-0 w-full bg-primary bg-opacity-50 text-white py-2 px-2">
@@ -297,6 +299,10 @@
 
         }
         $('#subject, #teaching_type, #location, #min_fee, #max_fee').on('change', fetchTutors);
+
+        fetchTutors();
     });
+
+    document.title = "Search Mentor";
 </script>
 @endsection

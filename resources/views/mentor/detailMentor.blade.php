@@ -37,13 +37,13 @@
                         <p class="font-bold text-end rupiah">{{ $mentor->hourly_rate }}</p>
                         <p class="text-start">Jam mengajar</p>
                         <p class="font-bold text-end">{{ $mentor->teaching_hours}}</p>
-                    </div>  
+                    </div>
                     <button class="rounded-full p-3 font-semibold text-white w-40" style="background-color: #3A86FF">Reserve Now</button>
                 </div>
             </div>
         </div>
 
-        
+
         <div class="border rounded-3xl w-full p-5" style="background-color: #C9F0B7">
             <h1 class="font-semibold mb-2 text-lg">About {{ $mentor->student->full_name }}</h1>
             <p class="mb-5">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
             @endforeach
-            
+
             {{-- response --}}
             {{-- <div class="border rounded-3xl w-5/6 p-5 mt-5 ml-24" style="background-color: #F7F6F5">
                 <div class="flex justify-between items-center">
@@ -98,19 +98,18 @@
     </div>
 
     <div class="right hidden md:block">
-        <div class="max-w-sm w-80 bg-white shadow items-center rounded-3xl">
-            <i class="flex p-5 fa-lg fa-regular fa-heart justify-end"></i>
+        <div class="max-w-sm w-80 bg-white shadow items-center rounded-3xl mt-8">
             <img class="p-5 w-44 rounded-3xl mx-auto -mt-10"  src="{{ asset($mentor->student->ktp_link) }}" alt="" />
-            <div class="p-5 text-center">
-                <h5 class="text-lg -mt-5 font-semibold text-gray-900">{{ $mentor->student->full_name }}</h5>
+            <div class="p-5 pt-0 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">{{ $mentor->student->full_name }}</h5>
                 <p class="mb-3 text-xs" style="color: #76460B"><i class="fa-solid fa-star" style="color: #FFD43B;"></i> {{ $mentor->average_rating }} ({{ $mentor->total_review }} ulasan)</p>
                 <div class="grid grid-cols-2 p-3 mb-3">
                     <p class="text-start">Tarif per jam</p>
                     <p class="font-bold text-end">{{ $mentor->hourly_rate }}</p>
                     <p class="text-start">Jam mengajar</p>
                     <p class="font-bold text-end">{{ $mentor->teaching_hours}}</p>
-                </div>  
-                <button class="rounded-full p-3 font-semibold text-white w-40" style="background-color: #3A86FF">Reserve Now</button>
+                </div>
+                <a href="{{ route('mentor.reserve', $mentor->id) }}" class="rounded-full p-3 px-5 inline-block font-semibold text-white w-40" style="background-color: #3A86FF">Reserve Now</a>
             </div>
         </div>
     </div>
@@ -123,7 +122,7 @@
     function formatRupiah(number) {
         return 'Rp ' + number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
-    
+
     $(document).ready(function(){
         $('.rupiah').each(function() {
             var amount = parseInt($(this).text());  // Get the current number from the element
@@ -132,5 +131,6 @@
 
     });
 
+    document.title = "Mentor Detail";
 </script>
 @endsection

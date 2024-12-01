@@ -30,27 +30,26 @@
                 <div class="p-5 border border-gray-200 bg-white">
                 <!-- Step 1 -->
                 <p class="mb-2 text-gray-700">1. Choose <span class="font-bold">m-Transfer > BCA Virtual Account</span></p>
-                
+
                 <!-- Step 2 -->
                 <p class="mb-2 text-gray-700">2. Input <span class="font-bold">Virtual Account number 1234567890</span> and choose "send".</p>
-                
+
                 <!-- Step 3 -->
                 <p class="mb-2 text-gray-700">3. Input the <span class="font-bold">Total Payment</span></p>
-                
+
                 <!-- Step 4 -->
                 <p class="text-gray-700">4. Input your <span class="font-bold">PIN m-BCA Number</span> and choose <span class="font-bold">OK</span>.</p>
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <div class="right ">
         <div class="w-full lg:w-96 bg-white shadow items-center rounded-3xl">
-            <i class="flex p-5 fa-lg fa-regular fa-heart justify-end"></i>
-            <img class="p-5 w-44 rounded-3xl mx-auto -mt-10" src="{{ asset($mentor->student->ktp_link) }}" alt="" />
-            <div class="p-5 text-center">
-                <h5 class="text-lg -mt-5 font-semibold text-gray-900">{{ $mentor->student->full_name }}</h5>
+            <img class="p-5 w-44 rounded-3xl mx-auto" src="{{ asset($mentor->student->ktp_link) }}" alt="" />
+            <div class="p-5 pt-0 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">{{ $mentor->student->full_name }}</h5>
                 <p class="mb-3 text-sm">{{ $mentor->subject }}</p>
                 <div class="grid grid-cols-2 p-3">
                     <p class="text-start">Price per Hour</p>
@@ -68,10 +67,10 @@
         <button class="rounded-3xl w-30 p-3 font-semibold text-white mt-5 mb-10 mx-auto block" style="background-color: #DA9318"  onclick="openModal()">
             <i class="fa-solid fa-arrow-up-from-bracket mr-3" style="color: black"></i>Proof of Payment
         </button>
-        
 
-        
-        
+
+
+
         <div id="uploadModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
             <div class="bg-white rounded-lg shadow-lg max-w-md w-full">
                 <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
@@ -94,7 +93,7 @@
                                     <input type="hidden" name="hours[]" value="{{ $hour }}">
                                 @endforeach
 
-                                
+
                             </div>
                     </div>
                     <div class="px-6 py-4 bg-gray-100 flex justify-end space-x-4">
@@ -108,7 +107,7 @@
                 </form>
             </div>
         </div>
-        
+
     </div>
 </div>
 @endsection
@@ -128,7 +127,7 @@
     function closeModal() {
         document.getElementById('uploadModal').classList.add('hidden');
     }
-    
+
     $(document).ready(function(){
         $('.rupiah').each(function() {
             var amount = parseInt($(this).text());  // Get the current number from the element
@@ -137,5 +136,6 @@
 
     });
 
+    document.title = "Payment";
 </script>
 @endsection

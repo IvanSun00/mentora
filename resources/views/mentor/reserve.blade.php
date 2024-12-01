@@ -23,7 +23,7 @@
                 <h1 class="font-semibold px-4 text-center 2-[68%] md:w-[58%]" id="dateNow">Monday, 7 October 2024</h1>
                 <button onclick="addOneDay()"><i class="fa-solid fa-angles-right text-2xl md:text-4xl"></i></button>
             </div>
-            
+
             {{-- <button id="6" class="slot w-full rounded-lg text-white text-center bg-[#9f4444] p-4 mb-3">
                 06.00-07.00
             </button> --}}
@@ -34,7 +34,7 @@
                     <i class="fa-solid fa-sun text-center p-3 text-2xl"></i>
                     <button id="6" class="slot w-full rounded-lg text-white text-center bg-[#9f4444] p-4 mb-3">
                         06.00-07.00
-                        
+
                     <button id="7" class="slot w-full rounded-lg text-white text-center bg-[#9f4444] p-4 mb-3">
                         07.00-08.00
                     </button>
@@ -94,7 +94,7 @@
                     </button>
                 </div>
             </div>
-    
+
             <!-- Save Button -->
             <div class="flex justify-center align-middle">
                 <button class="mt-3 w-[60%] md:w-[25%] mx-auto py-2 px-4 text-white font-semibold rounded-full text-xl"
@@ -112,21 +112,20 @@
             @endforeach
         </div>
     </div>
-    
+
 
     <div class="right hidden md:block">
-        <div class="max-w-sm w-80 bg-white shadow items-center rounded-3xl">
-            <i class="flex p-5 fa-lg fa-regular fa-heart justify-end"></i>
+        <div class="max-w-sm w-80 bg-white shadow items-center rounded-3xl mt-8">
             <img class="p-5 w-44 rounded-3xl mx-auto -mt-10"  src="{{ asset($mentor->student->ktp_link) }}" alt="" />
-            <div class="p-5 text-center">
-                <h5 class="text-lg -mt-5 font-semibold text-gray-900">{{ $mentor->student->full_name }}</h5>
+            <div class="p-5 pt-0 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">{{ $mentor->student->full_name }}</h5>
                 <p class="mb-3 text-xs" style="color: #76460B"><i class="fa-solid fa-star" style="color: #FFD43B;"></i> {{ $mentor->average_rating }} ({{ $mentor->total_review }} ulasan)</p>
                 <div class="grid grid-cols-2 p-3 mb-1">
                     <p class="text-start">Tarif per jam</p>
                     <p class="font-bold text-end rupiah">{{ $mentor->hourly_rate }}</p>
                     <p class="text-start">Total Jam Mengajar</p>
                     <p class="font-bold text-end" id="jam_mengajar">0</p>
-                </div>  
+                </div>
                 {{-- buat garis panjang --}}
                 <hr class="w-full mx-auto mb-3" style="border: 1px solid #E0E0E0">
 
@@ -213,13 +212,13 @@
                     schedules.forEach(schedule => {
                         if(schedule['is_available']){
                             let slot = document.querySelector(`.slot[id="${schedule['hour_start']}"]`);
-                            slot.classList.toggle('bg-[#9f4444]'); //hapus merah 
+                            slot.classList.toggle('bg-[#9f4444]'); //hapus merah
                             slot.classList.toggle('bg-[#17B169]'); //kasik hijau
 
                             hours.push(schedule['hour_start']);
                         }
                     });
-                    
+
                 }
             },
             error: function(xhr, status, error){
@@ -242,7 +241,7 @@
 
     }
 
-    
+
     $(document).ready(function(){
         $('.rupiah').each(function() {
             var amount = parseInt($(this).text());  // Get the current number from the element
@@ -270,10 +269,7 @@
         $('#jam_mengajar').html(selectedHours.length);
     }
 
-    
-
-
-
+    document.title = "Reserve Mentor";
 
 </script>
 @endsection
