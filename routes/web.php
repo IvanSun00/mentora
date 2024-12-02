@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MentorController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Middleware\MentorMiddleware;
 use App\Http\Middleware\StudentMiddleware;
@@ -43,10 +44,10 @@ Route::controller(ScheduleController::class)->prefix('schedule')->name('schedule
  * Routes for mentor
  */
 Route::controller(MentorController::class)->prefix('mentor')->name('mentor.')->group(function () {
-    
-    Route::get('/search', 'search')->name('search'); 
-    Route::get('/searchResult', 'searchResult')->name('searchResult');  
-    
+
+    Route::get('/search', 'search')->name('search');
+    Route::get('/searchResult', 'searchResult')->name('searchResult');
+
     // rating
     Route::get('/detail/{mentor}', 'detailMentor')->name('detailMentor');
 
@@ -56,6 +57,17 @@ Route::controller(MentorController::class)->prefix('mentor')->name('mentor.')->g
     // payment
     Route::get('/payment/{mentor}', 'payment')->name('payment');
     Route::post('/payment/{mentor}', 'paymentProcess')->name('paymentProcess');
+});
+
+/**
+ * Routes for review
+ */
+Route::controller(ReviewController::class)->prefix('review')->name('review.')->middleware([StudentMiddleware::class])->group(function() {
+    Route::get('/history', 'showHistory')->name('history');
+    Route::get('/session', 'showSession')->middleware([MentorMiddleware::class])->name('session');
+
+    Route::get('/form/{id}', 'showForm')->name('form');
+    Route::post('/form/{payment}', 'submitForm')->name('submitForm');
 });
 
 Route::get('/profile', function () {

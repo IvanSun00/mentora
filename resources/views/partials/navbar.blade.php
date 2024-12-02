@@ -30,6 +30,15 @@
                             aria-current="page">Become a Tutor</a>
                     </li>
                 @endif
+
+                {{-- Both mentor & student --}}
+                @if (Session::has('student_id'))
+                    <li>
+                        <a href="{{ route('review.history') }}" class="block py-4 px-3 rounded md:p-0"
+                            aria-current="page">Learning History</a>
+                    </li>
+                @endif
+
                 <li>
                     <a class="rounded-full w-40 text-white p-3 px-5 text-center mb-3 md:mb-0"
                         style="background-color: #DA9318" href="{{ route('mentor.search') }}">

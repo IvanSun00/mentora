@@ -25,5 +25,8 @@ class Payment extends Model
         return $this->hasOne(Review::class);
     }
 
-
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }
