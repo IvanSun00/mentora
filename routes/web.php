@@ -66,6 +66,7 @@ Route::controller(MentorController::class)->prefix('mentor')->name('mentor.')->g
 Route::controller(ReviewController::class)->prefix('review')->name('review.')->middleware([StudentMiddleware::class])->group(function() {
     Route::get('/history', 'showHistory')->name('history');
     Route::get('/session', 'showSession')->middleware([MentorMiddleware::class])->name('session');
+    Route::get('/booking', 'showBooking')->middleware([MentorMiddleware::class])->name('booking');
 
     Route::get('/form/{id}', 'showForm')->name('form');
     Route::post('/form/{payment}', 'submitForm')->name('submitForm');

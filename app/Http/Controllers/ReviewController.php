@@ -6,7 +6,9 @@ use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\Mentor;
 use App\Models\Review;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
+use App\Models\Schedule;
 
 class ReviewController extends Controller
 {
@@ -23,6 +25,13 @@ class ReviewController extends Controller
             $query->where('mentor_id', $mentorId);
         })->get();
         return view('review.session', compact('reviews'));
+    }
+
+    public function showBooking()
+    {
+        $mentorId = Session::get('mentor_id');
+        $schedules = Schedule::where('mentor_id', $mentorId)->whereNotNull('payment_id')->orderBy('date', 'asc')->orderBy('hour_start', 'asc')->get();
+        return view('review.booking', compact('schedules'));
     }
 
     public function showForm($id)

@@ -24,6 +24,10 @@
                             Schedule</a>
                     </li>
                     <li>
+                        <a href="{{ route('review.booking') }}" class="block py-4 px-3 rounded md:p-0"
+                            aria-current="page">Booking List</a>
+                    </li>
+                    <li>
                         <a href="{{ route('review.session') }}" class="block py-4 px-3 rounded md:p-0"
                             aria-current="page">Performance</a>
                     </li>
