@@ -40,7 +40,7 @@ class MentorController extends Controller
         $validatedData = $validator->validated();
 
         // Query pencarian berdasarkan data valid
-        $query = Mentor::with(['student:id,full_name,email,city','schedules.reviews']);
+        $query = Mentor::with(['student:id,full_name,email,city,profile_picture','schedules.reviews']);
 
         if (!empty($validatedData['subject'])) {
             $query->where('subject', 'LIKE', '%' . $validatedData['subject'] . '%');

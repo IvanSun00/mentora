@@ -51,7 +51,8 @@
                 </li>
                 <li>
                     <a href="#">
-                        <img src="{{ asset('bun.jpg') }}" alt="profile" class="h-12 w-12 rounded-full">
+                        <img src="{{ asset(session('profile_picture') ? session('profile_picture') : 'profile.png') }}"
+                            alt="profile" class="h-12 w-12 rounded-full">
                     </a>
                 </li>
             </ul>

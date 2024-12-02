@@ -119,6 +119,7 @@ class AuthController extends Controller
         if ($student && Hash::check($r['password'], $student->password)) {
             Session::put('student_id', $student->id);
             Session::put('username', $student->username);
+            Session::put('profile_picture', $student->profile_picture);
 
             $mentor = Mentor::where('student_id', $student->id)->first();
             if ($mentor) {

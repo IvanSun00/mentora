@@ -239,18 +239,16 @@
                 },
                 success: function(response){
                     $('.card-container').empty();
-                    console.log(response);
                     const detailMentorRoute = "{{ route('mentor.detailMentor', ':tutorId') }}";
                     if(response.message == 'success'){
                         if(response.data.length > 0){
-                            console.log("masuk");
                              // append new cards
                             response.data.forEach(tutor => {
                                 const detailUrl = detailMentorRoute.replace(':tutorId', tutor.id);
                                 $('.card-container').append(`
                                     <div class="max-w-sm bg-white border border-[#76460B] rounded-lg">
                                         <a href="${detailUrl}" class="relative">
-                                            <img class="rounded-t-lg object-cover w-full h-56" src="{{ asset('flo.jpg') }}" alt="Image description" />
+                                            <img class="rounded-t-lg object-cover w-full h-56" src="{{ asset('${tutor.student.profile_picture}') }}" alt="Image description" />
                                             <!-- Text inside the image -->
                                             <div class="absolute bottom-0 w-full bg-primary bg-opacity-50 text-white py-2 px-2">
                                                 <p class="font-bold">${tutor.student.full_name}</p>
@@ -276,7 +274,7 @@
                                 `);
                             });
                         }else{
-                            console.log("not found");
+                            // console.log("not found");
                             $('.card-container').append(`
                                 <div class="col-span-full">
                                     <div class="max-w-sm mx-auto bg-white border border-[#76460B] rounded-lg">

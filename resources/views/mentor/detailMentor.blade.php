@@ -61,7 +61,7 @@
                 <div class="border rounded-3xl w-full p-5 mb-5" style="background-color: #F7F6F5">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center">
-                            <img class="rounded-full w-10" src="{{ asset('profile.png') }}" alt="">
+                            <img class="rounded-full w-10 h-10 object-cover" src="{{ asset($review->payment->student->profile_picture) }}" alt="">
                             <p class="ml-4 font-semibold text-lg">{{ $review->payment->student->full_name}}</p>
                         </div>
                         <div class="flex items-center">
@@ -98,7 +98,7 @@
 
     <div class="right hidden md:block">
         <div class="max-w-sm w-80 bg-white shadow items-center rounded-3xl mt-8">
-            <img class="p-5 w-44 rounded-3xl mx-auto -mt-10"  src="{{ asset($mentor->student->ktp_link) }}" alt="" />
+            <img class="p-5 w-44 rounded-3xl mx-auto -mt-10"  src="{{ asset($mentor->student->profile_picture) }}" alt="" />
             <div class="p-5 pt-0 text-center">
                 <h5 class="text-lg font-semibold text-gray-900">{{ $mentor->student->full_name }}</h5>
                 <p class="mb-3 text-xs" style="color: #76460B"><i class="fa-solid fa-star" style="color: #FFD43B;"></i> {{ $mentor->average_rating }} ({{ $mentor->total_review }} ulasan)</p>
