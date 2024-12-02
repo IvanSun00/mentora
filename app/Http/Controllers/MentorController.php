@@ -86,12 +86,14 @@ class MentorController extends Controller
         $totalRating = 0;
         $totalReview = 0;
         $listReview = [];
+        $listPaymentId = [];
         foreach ($mentor->schedules as $schedule) {
             if ($schedule->reviews) {
+                if(in_array($schedule->payment->id, $listPaymentId)) continue;
+                $listPaymentId[] = $schedule->payment->id;
                 $totalRating += $schedule->reviews->overall_score;
                 $totalReview++;
                 $listReview[] = $schedule->reviews;
-
             }
         }
         $averageRating = $totalReview ? round($totalRating / $totalReview, 2) : 0;
