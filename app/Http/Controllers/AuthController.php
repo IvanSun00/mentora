@@ -35,6 +35,7 @@ class AuthController extends Controller
             'password' => 'required|min:8|string',
             'dob' => 'required|date',
             'city' => 'required|string',
+            'profile_picture' => 'required|image|mimes:jpeg,png,jpg|max:4096',
             'ktp_file' => 'required|image|mimes:jpeg,png,jpg|max:4096',
         ]);
 
@@ -45,6 +46,11 @@ class AuthController extends Controller
             $filename = $timestamp . '_ktp.' . $extension;
             $ktpLink = $r['ktp_file']->storeAs($filePath, $filename, 'public');
 
+            $extension2 = $r['profile_picture']->getClientOriginalExtension();
+            $timestamp2 = date('Y-m-d_His');
+            $filename2 = $timestamp2 . '_profile.' . $extension2;
+            $profileLink = $r['profile_picture']->storeAs($filePath, $filename2, 'public');
+
             Student::create([
                 'username' => $r['username'],
                 'password' => Hash::make($r['password']),
@@ -53,6 +59,7 @@ class AuthController extends Controller
                 'email' => $r['email'],
                 'birth_date' => $r['dob'],
                 'ktp_link' => "storage/" . $ktpLink,
+                'profile_picture' => "storage/" . $profileLink,
                 'city' => $r['city'],
             ]);
         } catch (Exception $e) {
