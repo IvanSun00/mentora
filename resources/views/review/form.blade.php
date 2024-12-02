@@ -199,5 +199,7 @@
         function updateOverall(value) {
             document.getElementById('overallValue').textContent = `Selected: ${value}`;
         }
+
+        document.title = "Review Mentor";
     </script>
 @endsection

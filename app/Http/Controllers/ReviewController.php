@@ -6,6 +6,7 @@ use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\Mentor;
 use App\Models\Review;
+use Illuminate\Support\Facades\Session;
 
 class ReviewController extends Controller
 {
@@ -13,6 +14,15 @@ class ReviewController extends Controller
     {
         $payments = Payment::where('student_id', session('student_id'))->get();
         return view('review.history', compact('payments'));
+    }
+
+    public function showSession()
+    {
+        $mentorId = Session::get('mentor_id');
+        $reviews = Review::whereHas('payment.schedules', function ($query) use ($mentorId) {
+            $query->where('mentor_id', $mentorId);
+        })->get();
+        return view('review.session', compact('reviews'));
     }
 
     public function showForm($id)

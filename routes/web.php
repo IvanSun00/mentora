@@ -7,6 +7,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Middleware\MentorMiddleware;
 use App\Http\Middleware\StudentMiddleware;
 use App\Models\Mentor;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -52,11 +53,11 @@ Route::controller(MentorController::class)->prefix('mentor')->name('mentor.')->g
     Route::get('/detail/{mentor}', 'detailMentor')->name('detailMentor');
 
     //reserve
-    Route::get('/reserve/{mentor}', 'reserve')->name('reserve');
+    Route::get('/reserve/{mentor}', 'reserve')->middleware([StudentMiddleware::class])->name('reserve');
 
     // payment
-    Route::get('/payment/{mentor}', 'payment')->name('payment');
-    Route::post('/payment/{mentor}', 'paymentProcess')->name('paymentProcess');
+    Route::get('/payment/{mentor}', 'payment')->middleware([StudentMiddleware::class])->name('payment');
+    Route::post('/payment/{mentor}', 'paymentProcess')->middleware([StudentMiddleware::class])->name('paymentProcess');
 });
 
 /**

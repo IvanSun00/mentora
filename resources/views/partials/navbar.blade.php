@@ -23,6 +23,10 @@
                             aria-current="page">Set
                             Schedule</a>
                     </li>
+                    <li>
+                        <a href="{{ route('review.session') }}" class="block py-4 px-3 rounded md:p-0"
+                            aria-current="page">Performance</a>
+                    </li>
                 @elseif(Session::has('student_id'))
                     {{-- navbar murid --}}
                     <li>
