@@ -47,7 +47,7 @@
 
     <div class="right ">
         <div class="w-full lg:w-96 bg-white shadow items-center rounded-3xl">
-            <img class="p-5 w-44 rounded-3xl mx-auto" src="{{ asset($mentor->student->ktp_link) }}" alt="" />
+            <img class="p-5 w-44 rounded-3xl mx-auto" src="{{ asset($mentor->student->profile_picture) }}" alt="" />
             <div class="p-5 pt-0 text-center">
                 <h5 class="text-lg font-semibold text-gray-900">{{ $mentor->student->full_name }}</h5>
                 <p class="mb-3 text-sm">{{ $mentor->subject }}</p>
